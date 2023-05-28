@@ -14,11 +14,9 @@
       <%= flash["notice"] %>
     </div>
     <div>
-      <a href="/">Home</a>
-      
       
       <% if@current_user%>
-      
+      <a href="/">Home</a>
       <a href="/logout">Logout</a>
       <p>Hi, <%=@current_user["username"] %></p>
       <% else %>
