@@ -11,6 +11,7 @@ class PlacesController < ApplicationController
     if @current_user
       @place = Place.find_by({ "id" => params["id"] })
       @posts = Post.where({ "place_id" => @place["id"] })
+      @posts_currentuser = @posts.where({"user_id"=> @current_user["id"]})
     else
       flash["notice"] = "Login first."
     end
