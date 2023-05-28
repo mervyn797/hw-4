@@ -18,6 +18,7 @@
       <a href="/logout">Logout</a>
       <a href="/login">Login</a>
       <a href="/users/new">Signup</a>
+      <p>Hi, <%= User.find_by({"id" => session["user_id"]})["username"] %></p>
     </div>
 
     <%= yield %>
