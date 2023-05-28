@@ -15,10 +15,16 @@
     </div>
     <div>
       <a href="/">Home</a>
+      
+      
+      <% if@current_user%>
+      
       <a href="/logout">Logout</a>
+      <p>Hi, <%=@current_user["username"] %></p>
+      <% else %>
       <a href="/login">Login</a>
       <a href="/users/new">Signup</a>
-      <p>Hi, <%= User.find_by({"id" => session["user_id"]})["username"] %></p>
+      <%end%>
     </div>
 
     <%= yield %>
