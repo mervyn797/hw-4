@@ -1,13 +1,17 @@
 <h1 class="headers"><%= @place["name"] %></h1>
 
 <h3 class ="headers">My Posts</h3>
-<% for post in @posts_currentuser %>
-  <div class="container col-md-4 col-sm-12">
-    <h4><%= post["title"] %></h4>
-    <h6><%= post["posted_on"] %></h6>
-    <p><%= post["description"] %></p>
+<div class="container">
+  <div class="row ">
+    <% for post in @posts_currentuser %>
+      <div class="col-md-4 col-sm-12 ">
+        <h4><%= post["title"] %></h4>
+        <h6><%= post["posted_on"] %></h6>
+        <p><%= post["description"] %></p>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <p>
   <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
