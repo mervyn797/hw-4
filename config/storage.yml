@@ -32,3 +32,10 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: tacogram_final_production
+  username: my_app
+  password: <%= ENV["TACOGRAM_FINAL_DATABASE_PASSWORD"] %>
