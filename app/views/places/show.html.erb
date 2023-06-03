@@ -1,27 +1,60 @@
 <h1 class="headers"><%= @place["name"] %></h1>
 
-<h3 class ="headers">My Posts</h3>
+<style>
+  .post-card {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card h4 {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .post-card h6 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .post-card p {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<h3 class="headers">My Posts</h3>
 <div class="container">
-  <div class="row ">
+  <div class="row">
     <% for post in @posts_currentuser %>
-      <div class="col-md-4 col-sm-12 ">
-        <h4><%= post["title"] %></h4>
-        <h6><%= post["posted_on"] %></h6>
-        <p><%= post["description"] %></p>
-        <% if post.uploaded_image.attached? %>
-          <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-        <% else %>
-          <img src="<%= post["image"] %>" class="img-fluid">
-        <% end %>
+      <div class="col-md-4 col-sm-12">
+        <div class="post-card">
+          <h4><%= post["title"] %></h4>
+          <h6><%= post["posted_on"] %></h6>
+          <p><%= post["description"] %></p>
+          <% if post.uploaded_image.attached? %>
+            <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+          <% else %>
+            <img src="<%= post["image"] %>" class="img-fluid">
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
 
+
 <p>
-  <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
+  <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-primary">New Post</a>
 </p>
 
 <p>
-  <a href="/places">Back to All Places</a>
+  <a href="/places" class="btn btn-secondary">Back to All Places</a>
 </p>
